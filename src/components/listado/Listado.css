@@ -1,0 +1,154 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo del botón que activa el Sidebar */
+.btnopciones {
+    width: 70px;
+    height: 70px;
+    background-color: #0e5680;
+    color: white;
+    font-size: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btnopciones:hover {
+    background-color: #015f89;
+    transform: translateY(-3px);
+}
+
+/* Sidebar */
+.offcanvas {
+    width: 300px;
+    background-color: #f8f9fa;
+    border-left: 2px solid #ddd;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.offcanvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.offcanvas-header h5 {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.offcanvas-body {
+    padding-top: 20px;
+}
+
+.datosHistorial {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+    padding: 10px;
+    transition: all 0.2s ease;
+}
+
+.datosHistorial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.textCotainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tituloTextHistorial {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.subtituloTextHistorial {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.iconoHistorial {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn_Historial_Acciones {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #495057;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btn_Historial_Acciones:hover {
+    color: #007bff;
+}
+
+
+.btn_Historial_Acciones_estrella {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #495057;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btn_Historial_Acciones_estrella:hover{
+    color: #ff9d00;
+}
+/* Mensajes de carga */
+.offcanvas-body p {
+    font-size: 16px;
+    color: #999;
+    text-align: center;
+}
+
+/* Estilo de botones dentro del sidebar */
+.btn-close {
+    color: #333;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.btn-close:hover {
+    color: #007bff;
+}
+
+
+
+.btn_Historial_Acciones_favoritos_estrella{
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #f0911b;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btn_Historial_Acciones_favoritos_estrella:hover{
+    color: #ff3c00;
+}
+
