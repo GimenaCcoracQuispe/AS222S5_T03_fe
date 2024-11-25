@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 const EditForm = ({ 
-  editingId, 
+  editingId,
   transcribedText, 
   translatedText, 
   fromLanguage, 
