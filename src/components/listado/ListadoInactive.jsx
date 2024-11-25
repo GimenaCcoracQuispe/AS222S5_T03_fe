@@ -113,6 +113,10 @@ const ListadoInactive = () => {
                     <div className="offcanvas-body">
 
                         {todos.map((todo, index) => (
+                            <div key={todo.id}>
+                                <p>{todo.nombre}</p>
+                                <button onClick={() => remover(todo.id)}>Restaurar</button>
+                            </div>
                         ))}
 
                     </div>)}
