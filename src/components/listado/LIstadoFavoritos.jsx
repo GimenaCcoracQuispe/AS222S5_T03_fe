@@ -10,8 +10,6 @@ const LIstadoFavoritos = () => {
     const [show, setShow] = useState(false);
     const [todos, setTodos] = useState([]); 
 
-    const url = "https://vigilant-meme-rjgr4q4j57rhxg5r-8085.app.github.dev";
-
     const fetchApi = async () => {
         try {
             const response = await fetch(`${API_BACKEND}api/favoritos`);
