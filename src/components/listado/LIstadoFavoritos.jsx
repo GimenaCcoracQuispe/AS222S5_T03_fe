@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2'
-import BASE_URL from '../../config/apiConfig';
+import API_BACKEND from '../../config/apiConfig';
 
 const LIstadoFavoritos = () => {
     const [show, setShow] = useState(false);
@@ -14,7 +14,7 @@ const LIstadoFavoritos = () => {
 
     const fetchApi = async () => {
         try {
-            const response = await fetch(`${BASE_URL}api/favoritos`);
+            const response = await fetch(`${API_BACKEND}api/favoritos`);
             const data = await response.json();
             console.log('Datos de la API:', data); 
             setTodos(data);
@@ -45,7 +45,7 @@ const LIstadoFavoritos = () => {
         }).then(async (result) => {
           if (result.isConfirmed) {
             try {
-              const response = await fetch(`${BASE_URL}api/delete/${id}`, {
+              const response = await fetch(`${API_BACKEND}api/delete/${id}`, {
                 method: 'DELETE',
               });
       
@@ -97,7 +97,7 @@ const LIstadoFavoritos = () => {
         }).then(async (result) => {
           if (result.isConfirmed) {
             try {
-              const response = await fetch(`${BASE_URL}api/restaurar/${id}`, {
+              const response = await fetch(`${API_BACKEND}api/restaurar/${id}`, {
                 method: 'PUT',
               });
       
