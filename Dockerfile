@@ -1,11 +1,17 @@
-FROM node:lts-alpine AS build-stage
-RUN mkdir app
+FROM node:14
+
+RUN mkdir -p /app
+
 WORKDIR /app
-COPY package*.json ./
+
+COPY package*.json /app
+
 RUN npm install
-COPY . .
-RUN npm run build
-FROM nginx:1.25.3-alpine AS produccion-stage
-COPY --from=build-stage /app/dist/ /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+COPY . /app
+
+RUN npm run build --prod
+
+EXPOSE 4200
+
+ENTRYPOINT ["npm", "start"]
