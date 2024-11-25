@@ -42,7 +42,6 @@ body {
   color: #888;
 }
 
-/* Estilos del contenedor para el formulario de traducción */
 .containerFormTraducir {
   display: flex;
   justify-content: space-between;
