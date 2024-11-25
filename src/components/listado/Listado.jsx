@@ -32,7 +32,7 @@ const Listado = ({ onEdit }) => {
     }
 
     try {
-      await fetch(`${BASE_URL}api/favoritos/${id}`, { method: 'PUT' });
+      await fetch(`${API_BACKEND}api/favoritos/${id}`, { method: 'PUT' });
       fetchApi();
     } catch (error) {
       console.error('Error en la actualización de favoritos:', error);
@@ -61,7 +61,7 @@ const Listado = ({ onEdit }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await fetch(`${BASE_URL}api/delete/${id}`, { method: 'DELETE' });
+          await fetch(`${API_BACKEND}api/delete/${id}`, { method: 'DELETE' });
           fetchApi();
         } catch (error) {
           console.error('Error al eliminar:', error);
