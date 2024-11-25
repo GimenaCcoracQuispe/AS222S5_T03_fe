@@ -12,7 +12,7 @@ const ListadoInactive = () => {
 
     const fetchApi = async () => {
         try {
-            const response = await fetch(`${BASE_URL}api/inactive`);
+            const response = await fetch(`${API_BACKEND}api/inactive`);
             const data = await response.json();
             console.log('Datos de la API:', data); 
             setTodos(data);
@@ -46,7 +46,7 @@ const ListadoInactive = () => {
         }).then(async (result) => {
           if (result.isConfirmed) {
             try {
-              const response = await fetch(`${BASE_URL}api/restaurar/${id}`, {
+              const response = await fetch(`${API_BACKEND}api/restaurar/${id}`, {
                 method: 'PUT',
               });
       
