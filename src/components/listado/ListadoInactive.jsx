@@ -113,27 +113,6 @@ const ListadoInactive = () => {
                     <div className="offcanvas-body">
 
                         {todos.map((todo, index) => (
-                            <div className='datosHistorial'>
-
-                                <div className="textCotainer" key={index}>
-
-                                    <div>
-                                        <p className="tituloTextHistorial">
-                                            {todo.input_text}
-                                        </p>
-                                        <p className="subtituloTextHistorial">
-                                            {todo.translated_text}
-                                        </p>
-                                    </div>
-                                    <div className="iconoHistorial">
-                                        <button className="btn_Historial_Acciones_favoritos_estrella" onClick={() => remover(todo.id)}>
-                                        <i class="bi bi-arrow-clockwise"></i>
-                                        </button>
-                                       
-                                    </div>
-                                </div>
-
-                            </div>
                         ))}
 
                     </div>)}
