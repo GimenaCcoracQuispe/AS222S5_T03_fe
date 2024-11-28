@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2'
-import BASE_URL from '../../config/apiConfig';
+import API_BACKEND from '../../config/apiConfig';
 
 const ListadoInactive = () => {
     const [show, setShow] = useState(false);
