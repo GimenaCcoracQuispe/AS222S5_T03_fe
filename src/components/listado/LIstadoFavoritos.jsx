@@ -6,39 +6,26 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2'
 import BASE_URL from '../../config/apiConfig';
 
-const LIstadoFavoritos = () => {
-    const [show, setShow] = useState(false);
-    const [todos, setTodos] = useState([]); 
+ const url = "https://super-carnival-x5v7jj5p9v7539pxj-8080.app.github.dev";
 
     const fetchApi = async () => {
+        try {
+            const response = await fetch(`${BASE_URL}api/favoritos`);
+            const data = await response.json();
+            console.log('Datos de la API:', data); 
+            setTodos(data);
     try {
         const response = await fetch(`${BASE_URL}api/favoritos`);
-        console.log("Response Status:", response.status);
-        console.log("Response Headers:", response.headers);
-        const text = await response.text();
-        console.log("Response Body:", text); // Ver la respuesta cruda
-
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
-
-        if (!text.trim()) {
-            throw new Error("La respuesta está vacía.");
-        }
-
-        const data = JSON.parse(text);
+        const text = await response.text();  // Obtén el texto primero
+        console.log("Texto de la respuesta:", text);  // Ver el contenido crudo de la respuesta
+        const data = JSON.parse(text);  // Luego lo conviertes a JSON
         console.log('Datos de la API:', data);
         setTodos(data);
-    } catch (error) {
+        } catch (error) {
+            console.error('Error al cargar los datos:', error);
         console.error('Error al cargar los datos:', error);
-        Swal.fire({
-            title: 'Error',
-            text: error.message,
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-        });
-    }
-};
+        }
+    };
 
     const eliminar = async (id) => {
         if (!id) {
