@@ -11,15 +11,19 @@ const LIstadoFavoritos = () => {
     const [todos, setTodos] = useState([]); 
 
     const fetchApi = async () => {
-        try {
-            const response = await fetch(`${BASE_URL}api/favoritos`);
-            const data = await response.json();
-            console.log('Datos de la API:', data); 
-            setTodos(data);
-        } catch (error) {
-            console.error('Error al cargar los datos:', error);
-        }
-    };
+    try {
+        const response = await fetch(`${BASE_URL}api/favoritos`);
+        const text = await response.text();  // Obtén el texto primero
+        console.log("Texto de la respuesta:", text);  
+
+        const data = JSON.parse(text); 
+        console.log('Datos de la API:', data);
+        setTodos(data);
+    } catch (error) {
+        console.error('Error al cargar los datos:', error);
+    }
+};
+
 
     const eliminar = async (id) => {
         if (!id) {
