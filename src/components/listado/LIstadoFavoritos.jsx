@@ -10,17 +10,25 @@ const LIstadoFavoritos = () => {
     const [show, setShow] = useState(false);
     const [todos, setTodos] = useState([]); 
 
-    const fetchApi = async () => {
-        try {
-            const response = await fetch(${BASE_URL}api/favoritos);
-            const data = await response.json();
-            console.log('Datos de la API:', data); 
-            setTodos(data);
-        } catch (error) {
-            console.error('Error al cargar los datos:', error);
+   const fetchApi = async () => {
+    try {
+        const response = await fetch(`${BASE_URL}api/favoritos`); // Uso correcto de template strings
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
-    };
-
+        const data = await response.json();
+        console.log('Datos de la API:', data);
+        setTodos(data);
+    } catch (error) {
+        console.error('Error al cargar los datos:', error);
+        Swal.fire({
+            title: 'Error',
+            text: error.message,
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+        });
+    }
+};
     const eliminar = async (id) => {
         if (!id) {
           Swal.fire({
