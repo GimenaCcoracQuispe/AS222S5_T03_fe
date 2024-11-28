@@ -1,7 +1,7 @@
-const API_BACKEND = import.meta.env.VITE_API_BACKEND;
+const BASE_URL = import.meta.env.VITE_API_URL;
 
-if (!API_BACKEND) {
+if (!BASE_URL) {
   throw new Error("La variable de entorno VITE_API_BACKEND no está definida.");
 }
-
-export default API_BACKEND;
+console.log("LA URL ES: ",BASE_URL)
+export default BASE_URL;
