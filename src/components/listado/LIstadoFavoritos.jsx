@@ -13,21 +13,19 @@ const LIstadoFavoritos = () => {
     const fetchApi = async () => {
     try {
         const response = await fetch(`${BASE_URL}api/favoritos`);
+        console.log("Response Status:", response.status);
+        console.log("Response Headers:", response.headers);
+        const text = await response.text();
+        console.log("Response Body:", text); // Ver la respuesta cruda
 
-        // Verifica si la respuesta es exitosa
         if (!response.ok) {
             throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
 
-        // Obtén la respuesta como texto y loguéala
-        const text = await response.text();
-        console.log("Texto de la respuesta:", text);  // Ver el contenido crudo de la respuesta
-
-        if (!text) {
+        if (!text.trim()) {
             throw new Error("La respuesta está vacía.");
         }
 
-        // Luego, parsea el texto a JSON
         const data = JSON.parse(text);
         console.log('Datos de la API:', data);
         setTodos(data);
@@ -41,8 +39,6 @@ const LIstadoFavoritos = () => {
         });
     }
 };
-
-
 
     const eliminar = async (id) => {
         if (!id) {
