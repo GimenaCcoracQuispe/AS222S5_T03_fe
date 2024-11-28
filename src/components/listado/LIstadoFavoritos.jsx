@@ -6,24 +6,18 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2'
 import BASE_URL from '../../config/apiConfig';
 
- const url = "https://super-carnival-x5v7jj5p9v7539pxj-8080.app.github.dev";
+const LIstadoFavoritos = () => {
+    const [show, setShow] = useState(false);
+    const [todos, setTodos] = useState([]); 
 
     const fetchApi = async () => {
         try {
-            const response = await fetch(`${BASE_URL}api/favoritos`);
+            const response = await fetch(${BASE_URL}api/favoritos);
             const data = await response.json();
             console.log('Datos de la API:', data); 
             setTodos(data);
-    try {
-        const response = await fetch(`${BASE_URL}api/favoritos`);
-        const text = await response.text();  // Obtén el texto primero
-        console.log("Texto de la respuesta:", text);  // Ver el contenido crudo de la respuesta
-        const data = JSON.parse(text);  // Luego lo conviertes a JSON
-        console.log('Datos de la API:', data);
-        setTodos(data);
         } catch (error) {
             console.error('Error al cargar los datos:', error);
-        console.error('Error al cargar los datos:', error);
         }
     };
 
