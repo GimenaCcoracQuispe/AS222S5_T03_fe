@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2';
-import API_BACKEND from '../../config/apiConfig';
+import BASE_URL from '../../config/apiConfig';
 
 const Listado = ({ onEdit }) => {
   const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ const Listado = ({ onEdit }) => {
 
   const fetchApi = async () => {
     try {
-      const response = await fetch(`${API_BACKEND}api/active`);
+      const response = await fetch(`${BASE_URL}api/active`);
       const data = await response.json();
       setTodos(data);
     } catch (error) {
@@ -32,7 +32,7 @@ const Listado = ({ onEdit }) => {
     }
 
     try {
-      await fetch(`${API_BACKEND}api/favoritos/${id}`, { method: 'PUT' });
+      await fetch(`${BASE_URL}api/favoritos/${id}`, { method: 'PUT' });
       fetchApi();
     } catch (error) {
       console.error('Error en la actualización de favoritos:', error);
@@ -61,7 +61,7 @@ const Listado = ({ onEdit }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await fetch(`${API_BACKEND}api/delete/${id}`, { method: 'DELETE' });
+          await fetch(`${BASE_URL}api/delete/${id}`, { method: 'DELETE' });
           fetchApi();
         } catch (error) {
           console.error('Error al eliminar:', error);
