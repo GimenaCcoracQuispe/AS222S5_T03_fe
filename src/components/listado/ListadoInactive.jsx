@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2'
-import API_BACKEND from '../../config/apiConfig';
+import BASE_URL from '../../config/apiConfig';
 
 const ListadoInactive = () => {
     const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ const ListadoInactive = () => {
 
     const fetchApi = async () => {
         try {
-            const response = await fetch(`${API_BACKEND}api/inactive`);
+            const response = await fetch(`${BASE_URL}api/inactive`);
             const data = await response.json();
             console.log('Datos de la API:', data); 
             setTodos(data);
@@ -46,7 +46,7 @@ const ListadoInactive = () => {
         }).then(async (result) => {
           if (result.isConfirmed) {
             try {
-              const response = await fetch(`${API_BACKEND}api/restaurar/${id}`, {
+              const response = await fetch(`${BASE_URL}api/restaurar/${id}`, {
                 method: 'PUT',
               });
       
@@ -113,9 +113,26 @@ const ListadoInactive = () => {
                     <div className="offcanvas-body">
 
                         {todos.map((todo, index) => (
-                            <div key={todo.id}>
-                                <p>{todo.nombre}</p>
-                                <button onClick={() => remover(todo.id)}>Restaurar</button>
+                            <div className='datosHistorial'>
+
+                                <div className="textCotainer" key={index}>
+
+                                    <div>
+                                        <p className="tituloTextHistorial">
+                                            {todo.input_text}
+                                        </p>
+                                        <p className="subtituloTextHistorial">
+                                            {todo.translated_text}
+                                        </p>
+                                    </div>
+                                    <div className="iconoHistorial">
+                                        <button className="btn_Historial_Acciones_favoritos_estrella" onClick={() => remover(todo.id)}>
+                                        <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                       
+                                    </div>
+                                </div>
+
                             </div>
                         ))}
 
