@@ -13,16 +13,35 @@ const LIstadoFavoritos = () => {
     const fetchApi = async () => {
     try {
         const response = await fetch(`${BASE_URL}api/favoritos`);
-        const text = await response.text();  // Obtén el texto primero
-        console.log("Texto de la respuesta:", text);  
 
-        const data = JSON.parse(text); 
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        // Obtén la respuesta como texto y loguéala
+        const text = await response.text();
+        console.log("Texto de la respuesta:", text);  // Ver el contenido crudo de la respuesta
+
+        if (!text) {
+            throw new Error("La respuesta está vacía.");
+        }
+
+        // Luego, parsea el texto a JSON
+        const data = JSON.parse(text);
         console.log('Datos de la API:', data);
         setTodos(data);
     } catch (error) {
         console.error('Error al cargar los datos:', error);
+        Swal.fire({
+            title: 'Error',
+            text: error.message,
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+        });
     }
 };
+
 
 
     const eliminar = async (id) => {
