@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Swal from 'sweetalert2';
-import BASE_URL from '../../config/apiConfig';
+import API_BACKEND from '../../config/apiConfig';
 
 const Listado = ({ onEdit }) => {
   const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ const Listado = ({ onEdit }) => {
 
   const fetchApi = async () => {
     try {
-      const response = await fetch(`${BASE_URL}api/active`);
+      const response = await fetch(`${API_BACKEND}api/active`);
       const data = await response.json();
       setTodos(data);
     } catch (error) {
